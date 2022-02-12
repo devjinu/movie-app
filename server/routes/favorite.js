@@ -45,6 +45,7 @@ router.post('/removeFromFavorite', (req, res) => {
         })
 })
 
+
 router.post('/addToFavorite', (req, res) => {
 
     const favorite = new Favorite(req.body)
