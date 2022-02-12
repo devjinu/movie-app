@@ -5,5 +5,5 @@ John Ahn님의 따라하며 배우는 노드, 리액트 시리즈 입니다.
 
 1. config 폴더 안에 dev.js 생성
 2. mongoDB 정보를 dev.js 파일에 입력
-3. root 디렉토리에서 'npm install' 입력 (다운로드 서버 종속성 다운로드)
-4. client 디렉토리에서 'npm install' 입력 (프론트엔드 종속성 다운로드)
+3. root, client 디렉토리에서 'npm install' 입력
+
