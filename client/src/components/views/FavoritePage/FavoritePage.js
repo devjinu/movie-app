@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import './favorite.css'
 import Axios from "axios";
-import {Popover} from "antd";
+import {Popover, button} from "antd";
+import {DeleteOutline} from "@ant-design-icons";
 import {IMAGE_BASE_URL} from "../../Config";
 
 function FavoritePage() {
@@ -33,10 +34,10 @@ function FavoritePage() {
         }
 
         Axios.post('/api/favorite/removeFromFavorite', variables)
-            .then(response =>{
-                if(response.data.success){
+            .then(response => {
+                if (response.data.success) {
                     fetchFavoritedMovie()
-                }else {
+                } else {
                     alert('리스트에서 삭제를 실패했습니다.')
                 }
 
@@ -61,7 +62,7 @@ function FavoritePage() {
             </Popover>
             <td>{favorite.movieRunTime} mins</td>
             <td>
-                <button onClick={() => onClickDelete(favorite.movieId, favorite.userFrom)}>Remove</button>
+                <button onClick={() => onClickDelete(favorite.movieId, favorite.userFrom)}><DeleteOutline />Remove </button>
             </td>
         </tr>
     })
@@ -72,10 +73,11 @@ function FavoritePage() {
             <hr/>
             <table>
                 <thead>
-                <tr></tr>
-                <th>Movie Title</th>
-                <th>Movie Runtime</th>
-                <th>Movie from favorites</th>
+                <tr>
+                    <th>Movie Title</th>
+                    <th>Movie Runtime</th>
+                    <th>Movie from favorites</th>
+                </tr>
                 </thead>
                 <tbody>
                 {renderCards}
