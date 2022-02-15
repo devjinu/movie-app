@@ -11,8 +11,7 @@ function LandingPage() {
     const [CurrentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
-
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko-Korean&page=1`;
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko-KR&include_image_language=ko-KR&page=1`;
         fetchMovies(endpoint)
         
     }, [])

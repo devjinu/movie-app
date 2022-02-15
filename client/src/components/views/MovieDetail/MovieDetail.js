@@ -26,7 +26,7 @@ function MovieDetailPage(props) {
 
     useEffect(() => {
 
-        let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=ko-Korean`;
+        let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=ko-KR&include_image_language=ko-KR`;
         fetchDetailInfo(endpointForMovieInfo)
 
         Axios.post('/api/comment/getComment', movieVariable)
@@ -55,7 +55,7 @@ function MovieDetailPage(props) {
                 setMovie(result)
                 setLoadingForMovie(false)
 
-                let endpointForCasts = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+                let endpointForCasts = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=ko-KR&include_image_language=ko-KR`;
                 fetch(endpointForCasts)
                     .then(result => result.json())
                     .then(result => {
