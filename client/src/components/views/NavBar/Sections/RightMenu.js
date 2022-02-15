@@ -14,7 +14,7 @@ function RightMenu(props) {
       if (response.status === 200) {
         props.history.push("/login");
       } else {
-        alert('Log Out Failed')
+        alert('로그아웃에 실패했습니다.')
       }
     });
   };
@@ -23,10 +23,10 @@ function RightMenu(props) {
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="mail">
-          <a href="/login">Signin</a>
+          <a href="/login">Login</a>
         </Menu.Item>
         <Menu.Item key="app">
-          <a href="/register">Signup</a>
+          <a href="/register">Join</a>
         </Menu.Item>
       </Menu>
     )
@@ -42,4 +42,3 @@ function RightMenu(props) {
 }
 
 export default withRouter(RightMenu);
-

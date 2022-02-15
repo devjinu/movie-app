@@ -8,7 +8,7 @@ import ReplyComment from './ReplyComment';
 const { TextArea } = Input;
 const { Title } = Typography;
 
-function Comments(props) {
+function Comment(props) {
 
     const user = useSelector(state => state.user);
     const [Comment, setComment] = useState("")
@@ -88,4 +88,4 @@ function Comments(props) {
     )
 }
 
-export default Comments
+export default Comment

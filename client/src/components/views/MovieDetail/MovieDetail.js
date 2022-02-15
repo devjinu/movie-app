@@ -3,9 +3,9 @@ import { Row, Button } from 'antd';
 import Axios from 'axios';
 import { PushpinOutlined } from '@ant-design/icons';
 
-import Comments from './Sections/Comments';
+import Comment from './Sections/Comment';
 import LikeDislikes from './Sections/LikeDislikes';
-import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../../Config';
+import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import GridCards from '../commons/GridCards';
 import MainImage from '../LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
@@ -21,20 +21,20 @@ function MovieDetailPage(props) {
     const [LoadingForMovie, setLoadingForMovie] = useState(true)
     const [LoadingForCasts, setLoadingForCasts] = useState(true)
     const [ActorToggle, setActorToggle] = useState(false)
-
+    
     const movieVariable = { movieId: movieId }
 
     useEffect(() => {
 
-        let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+        let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=ko-Korean`;
         fetchDetailInfo(endpointForMovieInfo)
 
-        Axios.post('/api/comment/getComments', movieVariable)
+        Axios.post('/api/comment/getComment', movieVariable)
             .then(response => {
                 console.log(response)
                 if (response.data.success) {
-                    console.log('response.data.comments', response.data.comments)
-                    setCommentLists(response.data.comments)
+                    console.log('response.data.comment', response.data.comments)
+                    setCommentLists(response.data.comment)
                 } else {
                     alert('댓글 정보를 가져오는데 실패했습니다.')
                 }
@@ -103,7 +103,7 @@ function MovieDetailPage(props) {
                 }
 
                 <br />
-
+                
                 {/* Actors Grid */}
 
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem' }}>
@@ -112,18 +112,18 @@ function MovieDetailPage(props) {
 
 
                 {ActorToggle &&
-                <Row gutter={[16, 16]} >
-                    {
-                        !LoadingForCasts ? Casts.map((cast, index) => (
-                            cast.profile_path &&
-                            <GridCards
-                                image={cast.profile_path ?
-                                    `${IMAGE_BASE_URL}w500${cast.profile_path}` : null}
-                                characterName={cast.name}
-                            />)) :
-                            <div> Loading... </div>
-                    }
-                </Row>
+                    <Row gutter={[16, 16]} >
+                        {
+                            !LoadingForCasts ? Casts.map((cast, index) => (
+                                cast.profile_path &&
+                                <GridCards
+                                    image={cast.profile_path ?
+                                        `${IMAGE_BASE_URL}w500${cast.profile_path}` : null}
+                                    characterName={cast.name}
+                                />)) :
+                                <div> Loading... </div>
+                        }
+                    </Row>
                 }
                 <br />
 
@@ -132,8 +132,8 @@ function MovieDetailPage(props) {
                     <LikeDislikes video videoId={movieId} userId={localStorage.getItem('userId')} />
                 </div>
 
-                {/* Comments */}
-                <Comments movieTitle={Movie.original_title} CommentLists={CommentLists} postId={movieId} refreshFunction={updateComment} />
+                {/* Comment */}
+                <Comment movieTitle={Movie.original_title} CommentLists={CommentLists} postId={movieId} refreshFunction={updateComment} />
 
             </div>
 
@@ -142,4 +142,4 @@ function MovieDetailPage(props) {
     )
 }
 
-export default MovieDetail
+export default MovieDetailPage

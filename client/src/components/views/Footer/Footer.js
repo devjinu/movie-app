@@ -1,5 +1,5 @@
-import React from 'react'
-import {Icon} from 'antd';
+import React from 'react';
+import { VideoCameraOutlined } from '@ant-design/icons';
 
 function Footer() {
     return (
@@ -8,7 +8,7 @@ function Footer() {
             flexDirection: 'column', alignItems: 'center',
             justifyContent: 'center', fontSize:'1rem'
         }}>
-           <p> Movie-app  <Icon type="smile" /></p>
+           <p> Happy Coding </p>
         </div>
     )
 }
